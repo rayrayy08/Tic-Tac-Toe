@@ -38,7 +38,8 @@ function boxClicked(e) {
             winning_blocks.map( box => boxes[box].style.backgroundColor=winnerIndicator)
             return
         }
-
+    //this highlights when the winning combination is identified by mapping over each of the boxes
+    //highlight color is pulled from the style css background color
         currentPlayer = currentPlayer == X_TEXT ? O_TEXT : X_TEXT
     }
 }
@@ -58,8 +59,6 @@ const winningCombos = [
 function playerHasWon() { //doesnt take parameter
     for (const condition of winningCombos) {
         let [a, b, c] = condition
-//this function checks if current player has won by looping over the winning combo 
-//by checking the condition. the aray
         if(spaces[a] && (spaces[a] == spaces[b] && spaces[a] == spaces[c])) {
             return [a,b,c]
         }
@@ -78,8 +77,8 @@ function restart() {
     boxes.forEach( box => {
         box.innerText = ''
         box.style.backgroundColor=''
+        //when restarted, the winning highlight color gets cleared
     })
-    //this highlights the box for the when the winning combination is identified
 
     playerText.innerHTML = 'Tic Tac Toe'
 
